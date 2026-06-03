@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Handwritten PDF OCR</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./node_modules/lucide/dist/umd/lucide.min.js"></script>
+    <script src="./node_modules/pdfjs-dist/build/pdf.min.js"></script>
+    <script src="./node_modules/tesseract.js/dist/tesseract.min.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>Handwritten PDF OCR</h1>
+          <p>Turn scanned notes into editable text.</p>
+        </div>
+        <div class="status" id="engineStatus">
+          <span class="dot"></span>
+          Ready
+        </div>
+      </header>
+
+      <section class="workspace">
+        <aside class="controls" aria-label="OCR controls">
+          <label class="dropzone" id="dropzone">
+            <input id="fileInput" type="file" accept="application/pdf" />
+            <i data-lucide="file-up"></i>
+            <strong>Choose PDF</strong>
+            <span id="fileName">or drop one here</span>
+          </label>
+
+          <div class="field">
+            <label for="language">Language</label>
+            <input id="language" value="eng" list="languages" spellcheck="false" />
+            <datalist id="languages">
+              <option value="eng"></option>
+              <option value="rus"></option>
+              <option value="eng+rus"></option>
+            </datalist>
+          </div>
+
+          <div class="field">
+            <label for="mode">Recognition mode</label>
+            <select id="mode">
+              <option value="notes">Notes</option>
+              <option value="math">Equations</option>
+              <option value="layout">Loose layout</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="scale">Page detail</label>
+            <div class="range-row">
+              <input id="scale" type="range" min="1.5" max="4.2" value="2.8" step="0.1" />
+              <output id="scaleValue">2.8x</output>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="contrast">Contrast</label>
+            <div class="range-row">
+              <input id="contrast" type="range" min="0" max="80" value="30" step="1" />
+              <output id="contrastValue">30</output>
+            </div>
+          </div>
+
+          <label class="check">
+            <input id="threshold" type="checkbox" />
+            <span>Ink cleanup</span>
+          </label>
+
+          <p class="hint" id="modeHint">
+            Notes mode is best for paragraphs and ordinary handwriting.
+          </p>
+
+          <div class="actions">
+            <button id="runButton" class="primary" disabled>
+              <i data-lucide="scan-text"></i>
+              Extract
+            </button>
+            <button id="clearButton" type="button">
+              <i data-lucide="rotate-ccw"></i>
+              Reset
+            </button>
+          </div>
+        </aside>
+
+        <section class="document-area" aria-label="Document preview">
+          <div class="panel-head">
+            <div>
+              <h2>Pages</h2>
+              <p id="pageSummary">No PDF loaded</p>
+            </div>
+            <progress id="progress" value="0" max="100"></progress>
+          </div>
+          <div class="preview-grid" id="previewGrid"></div>
+        </section>
+
+        <section class="result-area" aria-label="Extracted text">
+          <div class="panel-head">
+            <div>
+              <h2>Text</h2>
+              <p id="resultSummary">Waiting for OCR</p>
+            </div>
+            <div class="icon-actions">
+              <button id="copyButton" type="button" title="Copy text" disabled aria-label="Copy text">
+                <i data-lucide="copy"></i>
+              </button>
+              <button id="downloadButton" type="button" title="Download text" disabled aria-label="Download text">
+                <i data-lucide="download"></i>
+              </button>
+            </div>
+          </div>
+          <textarea id="output" placeholder="Extracted handwriting will appear here."></textarea>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

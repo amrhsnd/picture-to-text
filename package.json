@@ -1,0 +1,19 @@
+{
+  "name": "handwriting-ocr-app",
+  "version": "1.0.0",
+  "description": "A local browser app for turning scanned handwritten PDFs into editable text.",
+  "main": "app.js",
+  "scripts": {
+    "start": "python3 -m http.server 4174",
+    "test": "node --check app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "lucide": "^0.468.0",
+    "pdfjs-dist": "^3.11.174",
+    "tesseract.js": "^5.1.1"
+  }
+}
