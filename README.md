@@ -23,4 +23,4 @@ The app uses PDF.js to render PDF pages and Tesseract.js to OCR the rendered pag
 
 Handwriting OCR is imperfect. For best results, use clear scans, raise page detail for small writing, increase contrast for faint pencil, and try ink cleanup for noisy pages.
 
-Language uses Tesseract codes. Common aliases are handled automatically: `en` becomes `eng`, `ru` becomes `rus`, and `en+ru` becomes `eng+rus`. First-time OCR for a language may need to download that Tesseract trained-data file.
+Language uses Tesseract codes. Common aliases are handled automatically: `en` becomes `eng`, `fr` becomes `fra`, `ru` becomes `rus`, and mixed inputs such as `en+fr` become `eng+fra`. First-time OCR for a language may need to download that Tesseract trained-data file.

@@ -48,7 +48,7 @@ const MODE_SETTINGS = {
     psm: "11",
     preserveSpaces: "1",
     whitelist:
-      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+-=×÷*/^_()[]{}<>|.,:;!?'\"%∞√∑∫∂∆πθλμσΩαβγ",
+      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŸàâäçéèêëîïôöùûüÿŒœ+-=×÷*/^_()[]{}<>|.,:;!?'\"%∞√∑∫∂∆πθλμσΩαβγ",
     hint:
       "Equations mode preserves spacing and allows common math symbols, but it is still OCR, not full LaTeX reconstruction.",
   },
@@ -64,6 +64,10 @@ const MODE_SETTINGS = {
 const LANGUAGE_ALIASES = {
   en: "eng",
   english: "eng",
+  fr: "fra",
+  french: "fra",
+  francais: "fra",
+  "français": "fra",
   ru: "rus",
   russian: "rus",
 };
